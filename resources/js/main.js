@@ -163,8 +163,8 @@ async function selectImage() {
   fileExt = fileExt[fileExt.length - 1];
 
   let matches = false;
-  for(let i = 0; i < filter.extensions.length; i++) {
-    if(fileExt == filter.extensions[i]) {
+  for(let i = 0; i < filter.filters[0].extensions.length; i++) {
+    if(fileExt == filter.filters[0].extensions[i]) {
       matches = true;
       break;
     }
