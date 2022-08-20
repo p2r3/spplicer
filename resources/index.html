@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spplice Packaging Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="icon.png">
+  </head>
+  <body>
+
+    <h1>Spplice Packaging Tool</h1>
+
+    <h2>Package title: <input type="text" id="pkg-title" oninput="updateTitle()"><img src="warning.png" alt="Warning" class="warning"></h2>
+    <p class="desc">( this is the name that will be displayed on the preview card )</p>
+
+    <div class="spacer"></div>
+
+    <h2>Package name: <input type="text" id="pkg-name" oninput="updateName()"><img src="warning.png" alt="Warning" class="warning"></h2>
+    <p class="desc">( this is a unique name that will be used internally )</p>
+
+    <div class="spacer"></div>
+
+    <h2>Resources folder: <button type="button" id="pkg-dir" onclick="selectFolder()">Set folder</button></h2>
+    <p class="desc">( this is a folder containing game files in the format of portal2_dlc )</p>
+
+    <div class="spacer"></div>
+
+    <h2>Preview image: <button type="button" id="pkg-img" onclick="selectImage()">Set image</button></h2>
+    <p class="desc">( this is the thumbnail image of the preview card )</p>
+
+    <div class="spacer"></div>
+
+    <h2>Description:</h2>
+    <p class="desc">( this is the text shown when the preview card is clicked )</p>
+    <div class="center-block"><textarea id="pkg-desc" rows="5" cols="40" maxlength="400" oninput="updateDescription()"></textarea></div>
+
+
+
+    <div class="spacer"></div>
+
+    <div id="pkg-create" onclick="createPackage()">
+      <p id="pkg-create-text">Create package</p>
+    </div>
+
+    <script src="js/neutralino.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

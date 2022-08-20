@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+body {
+  background-color:black;
+  margin: 0;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+h1, h2, h3, p, button {
+  position: relative;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+.spacer {
+  height: 5vh;
+}
+h1 {
+  margin: 5vh 0;
+}
+p {
+  font-size: 1.2rem;
+  color: #C8C8C8;
+}
+input {
+  background: #242424;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0;
+  color: white;
+  transition: border-color 0.5s, color 0.5s;
+}
+textarea {
+  background: #242424;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 1vh 0;
+  color: white;
+  resize: none;
+  transition: border-color 0.5s, color 0.5s;
+}
+button {
+  background: #242424;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 10px;
+  font-size: 1rem;
+  transition: border-color 0.5s, color 0.5s;
+}
+#pkg-create {
+  margin: 5vh 0;
+  text-align: center;
+}
+#pkg-create-text {
+  font-size: 1.3rem;
+  letter-spacing: 0;
+  color: #000;
+  cursor: default;
+  transition: color 0.5s, letter-spacing 0.5s;
+}
+.warning {
+  position: absolute;
+  display: inline;
+  opacity: 0;
+  pointer-events: none;
+  margin-left: 7px;
+  top: calc(50% + 2px);
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  transition: opacity 0.5s;
+}
+
+.center-text {
+  text-align: center;
+}
+.center-block {
+  text-align: center;
+}
+.desc {
+  color: rgb(120, 120, 120);
+}
