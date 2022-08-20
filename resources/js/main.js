@@ -243,6 +243,9 @@ async function createPackage() {
     try { await Neutralino.filesystem.getStats(`${NL_PATH}/.tmp/${pkg.name}`) }
     catch (e) { await Neutralino.filesystem.createDirectory(`${NL_PATH}/.tmp/${pkg.name}`) }
 
+    // Remove soundcache
+    try { await Neutralino.filesystem.removeFile(`${pkg.dir}/maps/soundcache/_master.cache`) } catch(e) {}
+
     // Copy image, package resources directory
     await Neutralino.filesystem.copyFile(pkg.img, `${NL_PATH}/.tmp/${pkg.name}/${pkg.name}.${pkg.imgext}`);
     await Neutralino.os.execCommand(`tar -czf "${NL_PATH}/.tmp/${pkg.name}/${pkg.name}.sppkg" -C "${pkg.dir}" .`);
