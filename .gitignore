@@ -1,0 +1,6 @@
+# NeutralinoJS related files
+.tmp
+bin
+dist
+custom
+/resources/js/neutralino.js
