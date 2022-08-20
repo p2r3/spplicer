@@ -26,7 +26,7 @@ function searchIndex(key, val) {
 }
 
 function sanitizeHTML(string) {
-  return string.replace(/\\/g, "\\\\").replace(/"/g, '\"').replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
+  return string.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
 }
 
 function setWarning(element, text) {
