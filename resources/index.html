@@ -32,7 +32,10 @@
 
     <h2>Description:</h2>
     <p class="desc">( this is the text shown when the preview card is clicked )</p>
-    <div class="center-block"><textarea id="pkg-desc" rows="5" cols="40" maxlength="400" oninput="updateDescription()"></textarea></div>
+    <div id="pkg-desc-container" class="center-block">
+      <textarea id="pkg-desc" rows="5" cols="40" maxlength="400" oninput="updateDescription()"></textarea>
+      <p id="pkg-desc-minchars"></p>
+    </div>
 
 
 

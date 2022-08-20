@@ -86,3 +86,20 @@ button {
 .desc {
   color: rgb(120, 120, 120);
 }
+
+#pkg-desc-container {
+  position: relative;
+}
+#pkg-desc-minchars {
+  position: absolute;
+  left: 0;
+  bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: #FF6461;
+  font-family: monospace;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+}

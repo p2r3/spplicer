@@ -45,6 +45,7 @@ function setWarning(element, text) {
 
 }
 
+var titleLengthWarningTimeout;
 function updateTitle() {
 
   const domTitle = document.getElementById("pkg-title");
@@ -57,21 +58,36 @@ function updateTitle() {
   }
 
   if(domTitle.value.length > 4) {
+
     domTitle.style.color = "#faa81a";
     domTitle.style.borderColor = "#faa81a";
     pkg.title = domTitle.value;
+
+    if (searchIndex("title", pkg.title)) {
+      domTitle.style.color = "#FF6461";
+      domTitle.style.borderColor = "#FF6461";
+      setWarning(domTitle, "This title is already in use on the public package repositiory. You can still use it locally, but it will not be valid for uploading.");
+      pkg.title = null;
+    } else setWarning(domTitle, null);
+
+    clearTimeout(titleLengthWarningTimeout);
+
   } else {
+
     domTitle.style.color = "#fff";
     domTitle.style.borderColor = "#fff";
     pkg.title = null;
-  }
 
-  if(searchIndex("title", pkg.title)) {
-    domTitle.style.color = "#FF6461";
-    domTitle.style.borderColor = "#FF6461";
-    setWarning(domTitle, "This title is already in use on the public package repositiory. You can still use it locally, but it will not be valid for uploading.");
-    pkg.title = null;
-  } else setWarning(domTitle, null);
+    setWarning(domTitle, null);
+    if (domTitle.value.length !== 0) {
+      titleLengthWarningTimeout = setTimeout(function () {
+        setWarning(domTitle, "The title must consist of 5 to 25 characters.");
+      }, 1000);
+    } else {
+      clearTimeout(titleLengthWarningTimeout);
+    }
+
+  }
 
   domName.placeholder = domTitle.value.toLowerCase().replace(/[^A-Za-z0-9]/g, "-");
   while(domName.placeholder.indexOf("--") > -1) domName.placeholder = domName.placeholder.replace("--", "-");
@@ -82,6 +98,7 @@ function updateTitle() {
 
 }
 
+var nameLengthWarningTimeout;
 function updateName() {
 
   const domName = document.getElementById("pkg-name");
@@ -92,22 +109,39 @@ function updateName() {
   }
 
   if(domName.value.length > 4 || (domName.value.length === 0 && domName.placeholder.length > 4)) {
+
     domName.style.color = "#faa81a";
     domName.style.borderColor = "#faa81a";
     if(!domName.value.length) pkg.name = domName.placeholder;
     else pkg.name = domName.value;
+
+    if (searchIndex("name", pkg.name)) {
+      domName.style.color = "#FF6461";
+      domName.style.borderColor = "#FF6461";
+      setWarning(domName, "This name is already in use on the public package repositiory. You can still use it locally, but it will not be valid for uploading.");
+      pkg.title = null;
+    } else setWarning(domName, null);
+
+    clearTimeout(nameLengthWarningTimeout);
+
   } else {
+
     domName.style.color = "#fff";
     domName.style.borderColor = "#fff";
     pkg.name = null;
+
+    setWarning(domName, null);
+    if (domName.value.length !== 0 || domName.placeholder.length !== 0) {
+      nameLengthWarningTimeout = setTimeout(function() {
+        setWarning(domName, "The name must consist of 5 to 25 characters.");
+      }, 1000);
+    } else {
+      clearTimeout(nameLengthWarningTimeout);
+    }
+
   }
 
-  if(searchIndex("name", pkg.name)) {
-    domName.style.color = "#FF6461";
-    domName.style.borderColor = "#FF6461";
-    setWarning(domName, "This name is already in use on the public package repositiory. You can still use it locally, but it will not be valid for uploading.");
-    pkg.title = null;
-  } else setWarning(domName, null);
+  
 
   checkValidity();
 
@@ -189,18 +223,36 @@ async function selectImage() {
 
 }
 
+var descLengthWarningTimeout;
 function updateDescription() {
 
   const domDesc = document.getElementById("pkg-desc");
+  const minChars = document.getElementById("pkg-desc-minchars");
+
+  clearTimeout(descLengthWarningTimeout);
 
   if(domDesc.value.length >= 10) {
+
     domDesc.style.color = "#faa81a";
     domDesc.style.borderColor = "#faa81a";
     pkg.desc = sanitizeHTML(domDesc.value);
+    minChars.style.opacity = 0;
+
   } else {
+
     domDesc.style.color = "#fff";
     domDesc.style.borderColor = "#fff";
     pkg.desc = null;
+
+    if(domDesc.value.length !== 0) {
+      minChars.innerHTML = domDesc.value.length + " / 10";
+      descLengthWarningTimeout = setTimeout(function() {
+        minChars.style.opacity = 1;
+      }, 1000);
+    } else {
+      minChars.style.opacity = 0;
+    }
+    
   }
 
   checkValidity();
