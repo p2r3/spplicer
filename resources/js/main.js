@@ -137,10 +137,12 @@ async function selectImage() {
 
   const domImg = document.getElementById("pkg-img");
   const filter = {
-    name: "Images",
-    extensions: ["jpg", "jpeg", "png"]
+    filters: [{
+      name: "Images",
+      extensions: ["jpg", "jpeg", "png"]
+    }]
   };
-  const img = (await Neutralino.os.showOpenDialog("Select package thumbnail image", [filter]))[0];
+  const img = (await Neutralino.os.showOpenDialog("Select package thumbnail image", filter))[0];
   if(!img) return;
   const size = (await Neutralino.filesystem.getStats(img)).size;
 
