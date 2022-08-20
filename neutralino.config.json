@@ -1,6 +1,6 @@
 {
   "applicationId": "com.p2r3.spplicer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "defaultMode": "window",
   "port": 0,
   "documentRoot": "/resources/",
